@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Sorting -Predict</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">SMART SORTING</div>
+            <ul class="nav-menu">
+                <li><a href="/index" class="nav-link">Home</a></li>
+                <li><a href="/predict" class="nav-link active">Predict</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="predict-section">
+        <div class="container">
+            <div class="predict-header">
+                <h1 class="page-title">Image Classification</h1>
+            </div>
+
+            <div class="upload-container">
+                <div class="upload-form">
+                    <div class="upload-area">
+                        <label for="file-input" class="upload-label">
+                            <div class="upload-content">
+                                <div class="upload-icon">📁</div>
+                                <span class="upload-text">Upload Your Image :</span>
+                                <div class="file-input-wrapper">
+                                    <input type="file" id="file-input" accept="image/*" class="file-input">
+                                    <span class="file-status">No file chosen</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <button class="predict-btn" id="predict-btn">predict</button>
+                </div>
+
+                <div class="result-container" id="result-container" style="display: none;">
+                    <div class="result-card">
+                        <h2 class="result-title">FreshEye Detection</h2>
+                        <div class="result-content">
+                            <h3 class="result-subtitle">Result of fruit</h3>
+                            <div class="result-output" id="result-output">
+                                <!-- Results will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+    const fileInput = document.getElementById('file-input');
+    const fileStatus = document.querySelector('.file-status');
+    const predictBtn = document.getElementById('predict-btn');
+    const resultContainer = document.getElementById('result-container');
+    const resultOutput = document.getElementById('result-output');
+
+    fileInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            fileStatus.textContent = file.name;
+            predictBtn.disabled = false;
+            predictBtn.style.opacity = '1';
+        } else {
+            fileStatus.textContent = 'No file chosen';
+            predictBtn.disabled = true;
+            predictBtn.style.opacity = '0.6';
+        }
+    });
+
+    predictBtn.addEventListener('click', function () {
+        const file = fileInput.files[0];
+        if (!file) return;
+
+        predictBtn.textContent = 'Processing...';
+        predictBtn.disabled = true;
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        fetch('/predict-image', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            resultOutput.innerHTML = `<div class="prediction-result">${data.prediction} (${data.confidence})</div>`;
+            resultContainer.style.display = 'block';
+        })
+        .catch(err => {
+            resultOutput.innerHTML = `<div class="prediction-result">Error: ${err}</div>`;
+            resultContainer.style.display = 'block';
+        })
+        .finally(() => {
+            predictBtn.textContent = 'predict';
+            predictBtn.disabled = false;
+        });
+    });
+
+    predictBtn.disabled = true;
+    predictBtn.style.opacity = '0.6';
+</script>
+
+</body>
+</html>
