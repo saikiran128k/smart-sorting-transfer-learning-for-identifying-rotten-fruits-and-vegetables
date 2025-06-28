@@ -1,0 +1,64 @@
+Activity 3: Literature Survey – Rotten Fruit & Vegetable Detection
+1. Introduction
+Rotten fruit and vegetable detection is becoming increasingly important due to the global rise in food wastage, safety concerns, and the need for quality assurance in the food industry. Traditional manual sorting is slow, inconsistent, and labor-intensive. To solve these issues, researchers have applied machine learning and deep learning models—especially Convolutional Neural Networks (CNNs)—to automate the identification of spoiled produce using image data. This literature survey reviews the key developments in this field, focusing on techniques, strengths, and research gaps to shape the direction of our Smart Sorting project.
+
+2. Overview of Existing Systems
+Many researchers have built models to detect rotten produce using various deep learning approaches:
+
+Custom CNN Models: Some studies developed their own CNNs for binary classification (fresh vs rotten). For example, one model trained on over 13,000 images achieved nearly 99.9% accuracy by tuning architecture and preprocessing.
+
+Transfer Learning with Pretrained Models: Models like VGG16, MobileNetV2, and ResNet50 have been used with fine-tuning on fruit datasets. These models significantly reduce training time and achieve high accuracy, even with smaller datasets.
+
+YOLO and Object Detection Models: Real-time systems like YOLOv4 and Tiny-YOLOv3 are used in environments like conveyor belts and markets. These models are fast and accurate in identifying the location and class of spoiled produce in one go.
+
+Smart Appliance Integration: Some projects have proposed integrating these models with smart refrigerators or supermarket stock systems for freshness monitoring.
+
+These existing systems prove that deep learning can detect spoilage effectively, but many are still limited to specific use cases.
+
+3. Techniques and Methods
+Technique	Description
+CNN from Scratch	Models built from scratch for binary classification (fresh vs rotten). Often achieve high accuracy on small datasets.
+Transfer Learning	Pretrained models like VGG16 and MobileNetV2 are adapted to detect multiple fruit types and their freshness conditions.
+Object Detection	YOLO-based models detect both the object and its class in real-time. Suitable for industrial applications like conveyor belts or smart shelves.
+Data Augmentation	Includes rotation, flipping, zooming, and brightness shifts to increase dataset size and improve generalization.
+GANs for Augmentation	Some works use GANs to generate synthetic rotten fruit images, helping train models on rare spoilage types.
+Evaluation Metrics	Accuracy, Precision, Recall, F1-Score, and mAP (mean Average Precision) are used to evaluate models.
+
+4. Strengths and Weaknesses of Current Approaches
+Strengths
+
+High classification accuracy (above 90%) in controlled environments.
+
+Real-time models like YOLO work efficiently on video streams and conveyor belts.
+
+Data augmentation techniques help combat overfitting on small datasets.
+
+Transfer learning cuts down computational resources and training time.
+
+Weaknesses
+
+Most models focus on only a few fruit types and may not generalize well to unseen produce.
+
+Performance drops with poor lighting, occlusion, or complex backgrounds.
+
+Large object detection models may not run efficiently on edge devices like smart fridges.
+
+Lack of explainability makes it hard to trust or improve model decisions in critical environments.
+
+Internal spoilage (not visible externally) remains undetectable with current techniques.
+
+5. Research Gaps
+Despite good progress, the following gaps remain:
+
+Generalization to All Produce: Many models fail when applied to fruits and vegetables not seen during training.
+
+Robustness in Real-World Conditions: Lighting changes, background clutter, and partial occlusion still reduce accuracy.
+
+Shelf-Life Prediction: Most current models only classify freshness status, not predict how soon spoilage will occur.
+
+Explainability and Confidence Levels: Few systems explain why a fruit was classified as rotten, which is important for trust.
+
+Integration with IoT Devices: Smart sorting systems in homes and industries need lightweight, embedded solutions.
+
+6. Conclusion
+There is significant interest in using deep learning for fruit and vegetable freshness classification. While CNNs and transfer learning models provide excellent performance under ideal conditions, future research should address generalization, explainability, and deployment in real-world settings. The Smart Sorting project aims to bridge these gaps by building a robust, transferable, and user-friendly system for accurate detection and sorting of spoiled produce using image data.

@@ -1,0 +1,66 @@
+🥭 Milestone 1: Define the Problem
+✅ Activity 1: Specify the Rotten Detection Criteria
+🍏 Problem Context:
+Rotten fruits and vegetables are a major issue in the food supply chain. From farms to food processing plants, supermarkets to smart homes, identifying spoiled produce early can save time, reduce waste, and improve health and quality control. Traditional manual sorting is inefficient and error-prone. Hence, we aim to automate this using AI.
+
+In this project, we focus on detecting rotten fruits and vegetables using transfer learning — a technique where pre-trained models (like MobileNetV2) are adapted to our specific image dataset of fruits and vegetables.
+
+🔍 Step-by-Step Breakdown:
+1. Define What "Rotten" Means in This Project
+Rotten produce is identified based on visual symptoms such as:
+
+Color changes
+
+Texture degradation
+
+Spots, mold, or shriveling
+
+Surface damage or bruises
+
+These signs are visible in the dataset images, and the model is trained to distinguish them from fresh ones.
+
+2. Explore the Dataset
+Our dataset contains:
+
+Images of various fruits and vegetables
+
+Labeled into multiple categories such as:
+
+Apple___Fresh, Apple___Rotten
+
+Potato___Fresh, Potato___Rotten
+
+...and so on
+
+These labels serve as ground truth for supervised learning.
+
+3. Specify the Rotten Detection Criteria
+Rotten Detection Specification:
+
+In this study, an item is classified as “rotten” based on its image label in the dataset. Each image is pre-labeled by category (Fresh or Rotten). The transfer learning model is trained to classify the images using these labels.
+
+The model uses input images resized to 224x224 pixels, normalized, and passed through a MobileNetV2 architecture. Predictions are made using softmax classification, and the class with the highest confidence is selected.
+
+Example:
+
+image_245.jpg → Apple___Rotten → Confidence: 94.2%
+
+4. Why It Matters
+Correctly detecting rotten produce helps in:
+
+Preventing food waste at homes and stores
+
+Improving quality control in factories
+
+Automating sorting in large-scale processing units
+
+Enabling real-time alerts in smart refrigerators
+
+In all cases, the AI model replaces manual inspection with accurate, fast, and scalable solutions.
+
+📌 Example Output (We Can Copy/Edit):
+
+Milestone 1: Define the Problem
+Activity 1: Specify the Rot Detection Indicators
+
+Rotten fruits and vegetables significantly affect supply chain quality and consumer trust. In this project, visual cues such as color fading, mold patches, and texture decay are used as key indicators for rot detection. Leveraging a transfer learning-based model trained on a dataset of both fresh and rotten produce, we aim to automate this classification with high accuracy. These indicators serve as input features for the AI system to detect spoilage, enabling smart sorting in real-world scenarios like food processing plants, supermarkets, and smart refrigerators.
